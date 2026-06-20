@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "損益分岐点計算ツール｜利益が出る販売価格を自動計算",
   description:
     "仕入れ価格・手数料・送料から損益分岐点を自動計算できる無料ツール。メルカリや物販販売で赤字回避に便利です。",
+  verification: {
+    google: "miCxwdbgRhGe66W37cjiBB0MFNO1tB2WJxh9Dm_zTjc",
+  },
 };
 
 export default function RootLayout({
