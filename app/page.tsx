@@ -76,6 +76,26 @@ export default function Home() {
             </li>
           </ul>
         </div>
+        <section className="mt-10 bg-white rounded-xl p-6">
+  <h2 className="text-xl font-bold mb-4">
+    損益分岐点を把握することが重要な理由
+  </h2>
+
+  <p className="mb-3">
+    商品販売では、いくら以上で売れば利益が出るのかを事前に把握することが重要です。
+    これを損益分岐点といいます。
+  </p>
+
+  <p className="mb-3">
+    仕入れ価格や送料、販売手数料を考慮しないと、
+    売れたのに赤字になるケースがあります。
+  </p>
+
+  <p>
+    この損益分岐点計算ツールでは必要な販売価格を計算し、
+    利益が出るラインを確認できます。
+  </p>
+</section>
         <section className="mt-10 rounded-xl border bg-white p-5">
   <h2 className="mb-3 text-lg font-bold">ほかの便利ツール</h2>
   <div className="grid gap-2 text-sm">
