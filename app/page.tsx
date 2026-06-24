@@ -77,15 +77,36 @@ export default function Home() {
 </section>
         <section className="mt-10 rounded-xl border bg-white p-5">
   <h2 className="mb-3 text-lg font-bold">ほかの便利ツール</h2>
-  <div className="grid gap-2 text-sm">
-    <a className="text-blue-600 underline" href="https://calc-tools-mauve.vercel.app/">
-      利益計算ツール
+  <div className="grid gap-2 text-sm text-blue-600 underline">
+    <a href="https://calc-tools-mauve.vercel.app/">
+      メルカリ・Amazon・ラクマ利益計算ツール
     </a>
-    <a className="text-blue-600 underline" href="https://shipping-calc-olive.vercel.app/">
-      送料計算ツール
+    <a href="https://shipping-calc-olive.vercel.app/">
+      メルカリ送料計算ツール
     </a>
-    <a className="text-blue-600 underline" href="https://fee-calc-seven.vercel.app/">
-      手数料計算ツール
+    <a href="https://price-reverse-calc.vercel.app/">
+      利益から販売価格を逆算するツール
+    </a>
+    <a href="https://fee-calc-seven.vercel.app/">
+      メルカリ販売手数料計算ツール
+    </a>
+    <a href="https://profit-rate-calc.vercel.app/">
+      メルカリ利益率計算ツール
+    </a>
+    <a href="https://discount-rate-calc.vercel.app/">
+      割引率計算ツール
+    </a>
+    <a href="https://shipping-profit-calc.vercel.app/">
+      送料込み利益計算ツール
+    </a>
+    <a href="https://amazon-fee-calc.vercel.app/">
+      Amazon販売手数料計算ツール
+    </a>
+    <a href="https://roi-calc-woad.vercel.app/">
+      ROI（投資利益率）計算ツール
+    </a>
+    <a href="https://break-even-calc-one.vercel.app/">
+      損益分岐点計算ツール
     </a>
   </div>
 </section>
