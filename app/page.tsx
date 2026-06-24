@@ -17,7 +17,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 p-6 text-gray-900">
-      <div className="mx-auto max-w-xl rounded-2xl bg-white p-6 shadow">
+      <div className="max-w-2xl mx-auto bg-white rounded-2xl shadow p-6">
         <h1 className="text-2xl font-bold">損益分岐点計算ツール</h1>
         <p className="mt-2 text-sm text-gray-600">
           固定費と1個あたりの利益から、何個売れば黒字になるか計算します。
