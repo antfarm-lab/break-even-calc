@@ -13,9 +13,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "損益分岐点計算ツール｜利益が出る販売価格を自動計算",
-  description:
-    "仕入れ価格・手数料・送料から損益分岐点を自動計算できる無料ツール。メルカリや物販販売で赤字回避に便利です。",
+ title: "損益分岐点計算ツール【無料】赤字ラインを計算",
+description:
+  "仕入れ価格・送料・販売手数料から赤字にならない販売価格を無料で自動計算。メルカリ販売やAmazon販売の価格設定に便利です。",
+keywords: [
+  "損益分岐点",
+  "赤字ライン",
+  "販売価格計算",
+  "メルカリ販売",
+  "Amazon販売",
+  "利益計算",
+],
   verification: {
     google: "miCxwdbgRhGe66W37cjiBB0MFNO1tB2WJxh9Dm_zTjc",
   },
