@@ -14,6 +14,60 @@ export default function Home() {
 
     return Math.ceil(fixed / profit);
   }, [fixedCost, unitProfit]);
+    const fixed = Number(fixedCost) || 0;
+  const profit = Number(unitProfit) || 0;
+
+  const recoveryRate =
+    fixed > 0 && profit > 0 ? (profit / fixed) * 100 : 0;
+
+  const countScore =
+    breakEvenCount <= 0
+      ? 0
+      : breakEvenCount <= 10
+      ? 60
+      : breakEvenCount <= 25
+      ? 50
+      : breakEvenCount <= 50
+      ? 35
+      : breakEvenCount <= 100
+      ? 20
+      : 10;
+
+  const recoveryScore =
+    recoveryRate <= 0
+      ? 0
+      : recoveryRate >= 10
+      ? 40
+      : recoveryRate >= 5
+      ? 30
+      : recoveryRate >= 2
+      ? 20
+      : 10;
+
+  const score = countScore + recoveryScore;
+
+  let rank = "D";
+
+  if (score >= 85) {
+    rank = "S";
+  } else if (score >= 70) {
+    rank = "A";
+  } else if (score >= 55) {
+    rank = "B";
+  } else if (score >= 40) {
+    rank = "C";
+  }
+
+  const comment =
+    rank === "S"
+      ? "少ない販売個数で固定費を回収できる、黒字化しやすい条件です。"
+      : rank === "A"
+      ? "固定費を比較的回収しやすく、黒字化を狙いやすい条件です。"
+      : rank === "B"
+      ? "黒字化は可能ですが、必要販売数と販売ペースを確認して判断しましょう。"
+      : rank === "C"
+      ? "固定費回収までにある程度の販売数が必要です。利益額や固定費の見直しも検討しましょう。"
+      : "固定費回収のハードルが高い条件です。固定費または1個あたりの利益を見直しましょう。";
 
   return (
     <main className="min-h-screen bg-gray-50 p-6 text-gray-900">
@@ -53,7 +107,132 @@ export default function Home() {
             {breakEvenCount.toLocaleString()} 個
           </p>
         </div>
+        <div className="mt-6 rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+  <p className="text-sm font-semibold text-gray-500">
+    ANT FARM SCORE
+  </p>
+
+  {fixedCost === "" || unitProfit === "" ? (
+    <p className="mt-3 text-sm text-gray-600">
+      固定費と1個あたりの利益を入力するとSCOREを判定します。
+    </p>
+  ) : (
+    <>
+      <div className="mt-2 flex items-end justify-between gap-4">
+        <div>
+          <p className="text-4xl font-extrabold text-gray-900">
+            {score}
+            <span className="ml-1 text-lg font-semibold text-gray-500">
+              / 100
+            </span>
+          </p>
+
+          <p className="mt-1 text-sm font-semibold text-gray-700">
+            ランク：{rank}
+          </p>
+        </div>
+
+        <div className="text-right">
+          <p className="text-xl">
+            {score >= 85
+              ? "⭐⭐⭐⭐⭐"
+              : score >= 70
+              ? "⭐⭐⭐⭐☆"
+              : score >= 55
+              ? "⭐⭐⭐☆☆"
+              : score >= 40
+              ? "⭐⭐☆☆☆"
+              : "⭐☆☆☆☆"}
+          </p>
+        </div>
       </div>
+
+      <div className="mt-5 border-t border-gray-200 pt-4">
+        <p className="text-sm font-semibold text-gray-600">
+          SCORE内訳
+        </p>
+
+        <ul className="mt-2 space-y-1 text-sm text-gray-600">
+          <li>必要販売個数：{countScore} / 60点</li>
+          <li>固定費回収効率：{recoveryScore} / 40点</li>
+        </ul>
+      </div>
+
+      <div className="mt-5 border-t border-gray-200 pt-4">
+        <p className="text-sm font-semibold text-gray-600">
+          判定コメント
+        </p>
+
+        <p className="mt-2 text-sm leading-6 text-gray-700">
+          {comment}
+        </p>
+      </div>
+
+      <div className="mt-5 border-t border-gray-200 pt-4">
+        <p className="text-sm font-semibold text-gray-600">
+          SCORE判定基準
+        </p>
+
+        <ul className="mt-2 space-y-1 text-sm text-gray-600">
+          <li>⭐⭐⭐⭐⭐　S：85〜100点　黒字化しやすい</li>
+          <li>⭐⭐⭐⭐☆　A：70〜84点　比較的黒字化しやすい</li>
+          <li>⭐⭐⭐☆☆　B：55〜69点　販売数を確認して判断</li>
+          <li>⭐⭐☆☆☆　C：40〜54点　慎重に判断</li>
+          <li>⭐☆☆☆☆　D：0〜39点　条件の見直し推奨</li>
+        </ul>
+      </div>
+    </>
+  )}
+</div>
+      </div>
+      <section className="mx-auto mt-6 max-w-3xl rounded-xl border bg-white p-5">
+  <h2 className="mb-2 text-xl font-bold">
+    損益分岐点の早見表
+  </h2>
+
+  <p className="mb-4 text-sm text-gray-600">
+    固定費30,000円の場合、1個あたりの利益ごとに必要な販売個数は次のとおりです。
+  </p>
+
+  <div className="overflow-x-auto">
+    <table className="w-full border-collapse text-sm">
+      <thead>
+        <tr className="bg-gray-100">
+          <th className="border p-2">1個あたりの利益</th>
+          <th className="border p-2">固定費</th>
+          <th className="border p-2">損益分岐点</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {[
+          [500, 30000, 60],
+          [1000, 30000, 30],
+          [1200, 30000, 25],
+          [1500, 30000, 20],
+          [2000, 30000, 15],
+          [3000, 30000, 10],
+        ].map(([profit, fixed, count]) => (
+          <tr key={profit}>
+            <td className="border p-2 text-right">
+              {profit.toLocaleString()}円
+            </td>
+            <td className="border p-2 text-right">
+              {fixed.toLocaleString()}円
+            </td>
+            <td className="border p-2 text-right font-semibold">
+              {count.toLocaleString()}個
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p className="mt-3 text-xs text-gray-500">
+    ※ 損益分岐点 ＝ 固定費 ÷ 1個あたりの利益で計算し、必要販売個数は切り上げています。
+  </p>
+</section>
           <section className="mt-12 text-left max-w-3xl mx-auto space-y-6">
 
   <div>
@@ -105,7 +284,7 @@ export default function Home() {
 </div>
 
 </section>  
-        <section className="mt-10 bg-white rounded-xl p-6">
+        <section className="mt-10 max-w-3xl mx-auto bg-white rounded-xl p-6">
   <h2 className="text-xl font-bold mb-4">
     損益分岐点を把握することが重要な理由
   </h2>
@@ -123,7 +302,7 @@ export default function Home() {
     この損益分岐点計算ツールでは、固定費を回収するために必要な販売個数を自動計算できます。
   </p>
 </section>
-        <section className="mt-10 rounded-xl border bg-white p-5">
+       <section className="mt-10 max-w-3xl mx-auto rounded-xl border bg-white p-5">
   <h2 className="text-xl font-bold mb-3">
   他の便利ツール
 </h2>
